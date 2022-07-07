@@ -1,0 +1,44 @@
+.Mainlogo{
+    font-size: 880px !important;
+
+}
+.ant-layout-sider-zero-width-trigger{
+    top: 5px;
+}
+.sidebar{
+    background-color:#ffffff;
+   
+}
+
+.mainlogo{
+    background-color: #2b78d4;
+    color: white;
+    font-size: 50px;
+}
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+    background-color: #2b78d4;
+    color: white;
+    border-radius: 6px;
+}
+/* 
+.ant-menu-inline .ant-menu-item::after {
+    border-right: none;
+    right: 40px;
+    
+} */
+.ant-menu-inline {
+    padding: 0 10px;
+    
+}
+.mainlogo .ant-menu-item .ant-menu-item-icon{
+    font-size: 20px;
+}
+.anticon, .anticon-swap, .ant-menu-item-icon{
+    margin-left: -8px;
+}
+.center-sidebar li{
+    /* background-color: #d2dfef; */
+    color: orange;
+   
+    
+}
