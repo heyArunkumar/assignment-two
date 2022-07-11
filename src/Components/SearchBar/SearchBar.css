@@ -1,10 +1,14 @@
 .ant-input {
     border-left: none;
+    width: 80%;
+   padding: 8px  0;
+   border-radius: 5px ;
 }
+
 h2{
     color: #212121;
-    font-weight: 600;
-    font-size: 22px;
+    font-weight: 700;
+    font-size: 23px;
    
 }
 @media screen and (max-width:992px) {

@@ -11,10 +11,12 @@ const Cardmap = () => {
     <Row>
       <Col xs={8} sm={8} md={8} lg={8} xl={8} > */}
       {details.map((card, id) => {
-        console.log(card.title)
+        
         return (
           <div className='parentContainer' >
-            <Cards 
+            <Cards  
+             key={card.id}
+              img ={card.img}
               title={card.title}
               description={card.description}
               content1={card.content1}

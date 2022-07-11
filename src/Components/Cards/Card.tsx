@@ -3,13 +3,17 @@ import React from 'react';
 import 'antd/dist/antd.css'; 
 import '../Cards/Card.css'
 
+import img1 from '../img/i1.png'
+
 type cardDetailstype={
+  img:any
   title:string
   description:string
   content1:string
   content2:string
 }
 const Cards = (props:cardDetailstype) => (
+  
     
  <Row>
     <Col xs={24} sm={24} md={24} lg={12} xl={8} >
@@ -17,8 +21,7 @@ const Cards = (props:cardDetailstype) => (
     <Card  style={{ width: 320 }} bodyStyle={{borderRadius:'10px'}}  className='card-widt'>
       <div style={{display:'flex'}} className='card-one'>
       <div style={{marginRight:'30px'}}>
-     {<Avatar src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg" className='avatar'/>}
-     
+      <img src={props.img} width={40} className='avatar'></img>
       </div>
       <div className='beforeHover'>
       <span className='title'>{props.title}</span><br></br>
