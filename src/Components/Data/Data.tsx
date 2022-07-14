@@ -5,7 +5,7 @@ const details = [
     {
         id:1,
         img:img1,
-        title: "GRN approval",
+        title: "Purchase order...",
         description: "WF_PO_PROCESSING_STD2",
         content1: "Leave application for admin approval",
         content2: "This workflow is to enable an employee raise his leave request and to get it approved from his reporting manager",
@@ -20,7 +20,7 @@ const details = [
     },    {
         id:3,
         img:img3,
-        title: "GRN approval",
+        title: "ASN approval",
         description: "WF_PO_PROCESSING_STD2",
         content1: "Leave application for admin approval",
         content2: "This workflow is to enable an employee raise his leave request and to get it approved from his reporting manager",
@@ -29,7 +29,7 @@ const details = [
         {
         id:4,
         img:img1,
-        title: "GRN approval",
+        title: "Quotation approval",
         description: "WF_PO_PROCESSING_STD2",
         content1: "Leave application for admin approval",
         content2: "This workflow is to enable an employee raise his leave request and to get it approved from his reporting manager",

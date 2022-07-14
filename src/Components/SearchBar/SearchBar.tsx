@@ -3,6 +3,7 @@ import React from 'react';
 import 'antd/dist/antd.css'; 
 import '../SearchBar/SearchBar.css'
 import { SearchOutlined  } from '@ant-design/icons';
+import CreateWorkflow from '../Create-workflow/CreateWorkflow';
 
 const SearchBar = () => (
   <Row>
@@ -17,10 +18,10 @@ const SearchBar = () => (
      className='button'
       style={{textAlign:'center',display:'flex',alignItems:'center',justifyContent:'flex-end'
       }}>
-
-    <Button type="primary" >
+        <CreateWorkflow Employee_name="" designation="" Employee_details=""/>
+   {/* <Button type="primary" >
       Create Workflow
-      </Button>
+      </Button> */}
     </Col>
   </Row>
 );

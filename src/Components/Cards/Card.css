@@ -68,7 +68,9 @@ border: 2px solid #2b78d4;
     margin-top: 14px;
     border-radius: 5px;
  }
- 
+  .viewDetails{
+    padding: 4px 24px !important;
+ } 
 
 
  .hover-content{

@@ -1,0 +1,104 @@
+/* .workflow-model{
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (max-width:768px) {
+    .workflow-model{
+     flex-direction: column;
+     align-items: center;
+    }
+}
+.input ,.textarea{
+    border: 2px solid  #2B78D4;
+    
+}
+@media screen and (max-width:768px) {
+    .input ,.textarea{
+        width: 200px;
+    }
+    textarea.ant-input{
+        line-height: 0.5715;
+    }
+}
+
+
+.input,.textarea{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    margin-top: 20px;
+  
+}
+input{
+      font-size: 20px;
+    font-weight: 600;
+}
+
+
+.textarea.ant-input{
+    width: 200%;
+}*/
+.ant-modal-title{
+    font-size: 14px;
+    color: #A7B0C3;
+    font-weight: 700;
+}
+
+@media screen and (max-width:568px){
+.ant-btn, .ant-btn-primary{
+    float: left !important; 
+}
+} 
+@media screen and (min-width:768px){
+    .ant-input{
+        width: 170%;
+    }
+}
+.ant-input{
+
+ border-top: none !important;
+ border-left: none !important;
+ border-right: none !important;
+ border: 2px solid  #2B78D4;
+}
+.employee-details{
+    margin-right: 0px;
+    color:#002F68;
+    margin-top: 35px;
+     
+}
+.textarea.ant-input{
+    max-width: 113%;
+    padding: 0 0;
+}
+.ant-btn {
+    padding: 4px 40px;
+    margin-right: 10px;
+}
+.ant-row {
+    align-items: baseline;
+}
+.ant-upload.ant-upload-select-picture-card {
+    width: 127px !important;
+    height: 155px !important;
+}
+.ant-modal-body{
+    padding: 0px 24px 2px 24px;
+}
+.saveBtn,.cancelBtn{
+    margin-top: 50px !important;
+}
+.ant-upload.ant-upload-select-picture-card{
+    background-color: #D1DCF4 !important;
+}
+.ant-modal-header{
+    border-bottom: none !important;
+    border-top-left-radius: 40px !important;
+    border-top-right-radius: 40px !important;
+}
+.ant-modal-content{
+    border-radius: 15px !important;
+}
+.cancelBtn{
+    color: #2B78D4;
+}
