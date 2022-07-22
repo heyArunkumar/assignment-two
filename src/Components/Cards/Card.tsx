@@ -1,53 +1,111 @@
 import { Col, Row, Card, Button, Avatar, Image, Input, Modal, Form } from 'antd';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import 'antd/dist/antd.css';
 import '../Cards/Card.css'
+import img from '../img/i1.png'
+import e from 'express';
 
 
 const { TextArea } = Input;
 type cardDetailstype = {
-  img: any
-  title: string
-  description: string
-  content1: string
-  content2: string
+  index:any
+  name: any
+  designation: any
+  Employee_details: any
+  // updateList:any
+  refresh:any
+  id:any
+  
 }
   const Cards = (props: cardDetailstype) => {
-         let employeeDetail = JSON.parse(`${localStorage.getItem('employeeDetail')}`);
-       //console.log("fromcard", employeeDetail)
+        
+     
          const [modal2Visible, setModal2Visible] = useState(false);
-         const [employeeName, setEmployeeName] = useState('');
-         const [designationVal, setDesignationVal] = useState('');
-         const [employeeDetails, setEmployeeDetails] = useState('');
+         const [employeeName, setEmployeeName] = useState(props.name);
+         const [designationVal, setDesignationVal] = useState(props.designation);
+         const [employeeDetails, setEmployeeDetails] = useState(props.Employee_details);
+          
+      
+      const   handleDeletee =()=>{
+        let employeeDetail = JSON.parse(`${localStorage.getItem('employeeDetail') || '[]'}`);
 
+          for (let index = 0; index < employeeDetail.length; index++) {
+              if(props.name === employeeDetail[index].name &&
+                props.designation=== employeeDetail[index].designation){
+  
+                  employeeDetail = [
+                    ...employeeDetail.slice(0, index),
+                    ...employeeDetail.slice(index + 1)
+                  ];
+  
+              }
+          }
+
+          localStorage.setItem('employeeDetail', JSON.stringify(employeeDetail));
+          // props.updateList(employeeDetail);
+          props.refresh()
+      }
+
+    
+      const handleEditSubmit=()=>{
+          
+       let employeeDetail = JSON.parse(`${localStorage.getItem('employeeDetail') || '[]'}`);
+     console.log("employeeDetail",employeeDetail)
+       employeeDetail = employeeDetail.map((value:any)=>{
+        if(value.name===props.name && 
+          value. designation===props.designation 
+          &&value.Employee_details===props.Employee_details){
+
+          console.log("value.name",value.name)
+          console.log("name",props.name )
+          return{
+            ...value,
+            name:employeeName,  
+            designation:designationVal,
+            Employee_details:employeeDetails
+          }
+          
+        }
+        return value
+       })
+      
+      localStorage.setItem('employeeDetail', JSON.stringify(employeeDetail));
+      props.refresh()
+    }
+      
+     
+      const handleCancel = () => {
+        setModal2Visible(false);
+      };
   return (
     <>
-    <p>{employeeDetail.map((item:any)=>{
-        console.log(item.name)
-    })}</p>
-      <Row>
+     <Row>
+    
         <Col xs={24} sm={24} md={24} lg={12} xl={8} >
-          <div className="site-card-border-less-wrapper " style={{ borderRadius: '10px' }}>
+          <div className="site-card-border-less-wrapper " style={{ borderRadius: '10px' }}
+          key={props.index}
+          >
             <Card style={{ width: 320 }} bodyStyle={{ borderRadius: '10px' }} className='card-widt'>
               <div style={{ display: 'flex' }} className='card-one'>
+                
                 <div style={{ marginRight: '30px' }}>
-                  <img src={props.img} width={40} className='avatar'></img>
+                  <img src={img} width={40} className='avatar'></img>
                 </div>
                 <div className='beforeHover'>
-                  <span className='title'>{props.title}</span><br></br>
-                  <span className='description'> {props.description}</span><br></br>
+                  <span className='title'>{props.name}</span><br></br>
+                  <span className='description'> {props.designation}</span><br></br>
                   <br></br>
-                  <p className='content1' style={{ marginRight: '20px', marginTop: '-9px', color: '#5C83B1' }}>{props.content1}</p>
+                  <p className='content1' style={{marginRight: '20px', marginTop: '-9px', color: '#5C83B1' }}>{props.Employee_details}</p>
                 </div>
 
               </div>
               <div className='hover-content' >
-                <span className='hover-para'>{props.content2}</span><br></br>
+                <span className='hover-para'>This workflow is to enable an employee raise his leave request and to get it approved from his reporting manager</span><br></br>
                 
                 <Button type="primary" className='viewDetails' onClick={() => setModal2Visible(true)}>
                   View Details
                 </Button>
-                <Button>Delete</Button>
+                <Button onClick={ handleDeletee}>Delete</Button>
                 <Modal
                   centered
                   visible={modal2Visible}
@@ -57,13 +115,13 @@ type cardDetailstype = {
                 >
                   <div style={{ display: 'flex', paddingTop: '20px' }} className='card-one'>
                       <div style={{ marginRight: '30px' }}>
-                         <img src={props.img} width={40} className='avatar'></img>
+                         <img src={img} width={40} className='avatar'></img>
                       </div>
                       <div className='beforeHover'>
-                         <span className='title'>{props.title}</span><br></br>
-                         <span className='description'> {props.description}</span><br></br>
+                         <span className='title'>{props.name}</span><br></br>
+                         <span className='description'> {props.designation}</span><br></br>
                           <br></br>
-                           <p className='content1' style={{ marginRight: '20px', marginTop: '-9px', color: '#5C83B1' }}>{props.content1}</p>
+                           <p className='content1' style={{ marginRight: '20px', marginTop: '-9px', color: '#5C83B1' }}>{props.Employee_details}</p>
                        </div>
                   </div>
 
@@ -71,6 +129,7 @@ type cardDetailstype = {
                     <Col xs={24} sm={24} md={18} lg={18} xl={18}>
                       <Form
                         name="basic"
+                      
                         labelCol={{ span: 8 }}
                         wrapperCol={{ span: 16 }}
                         initialValues={{ remember: true }}
@@ -89,17 +148,18 @@ type cardDetailstype = {
                             <div>
 
                             <Form.Item
-                               name="Employee_name"
+                              
                               >
                               <Input
                                 className='input'
                                 name="Employee_name"
                                 value={employeeName}
+                                onChange={(e)=>setEmployeeName(e.target.value)}
                                 />
                               </Form.Item>
 
                               <Form.Item
-                                name="designation"
+                      
                                >
                               <Input
                                 className='input'
@@ -107,24 +167,25 @@ type cardDetailstype = {
                                 style={{ marginTop: '0px' }}
                                 name="designation"
                                 value={designationVal}
+                                onChange={(e)=>setDesignationVal(e.target.value)}
                                 />
                               </Form.Item>
 
 
-                              {/* {employeeDetail.map((item:any)=>{ 
-                          setEmployeeName(item.name)
-                             })} */}
                               <TextArea rows={4}
                                 className="textarea"
                                 name="Employee_details"
                                 value={employeeDetails}
+                                onChange={(e)=>setEmployeeDetails(e.target.value)}
                               />
                             </div>
                           </div>
                         </div>
                         <Button
                           style={{ border: '1px solid #2B78D4' }}
-                          className='cancelBtn'>
+                          className='cancelBtn'
+                          onClick={handleCancel}
+                          >
                           Cancel</Button>
 
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
@@ -132,6 +193,7 @@ type cardDetailstype = {
                            type="primary"
                            htmlType="submit"
                            className='saveBtn'
+                           onClick={handleEditSubmit}
                           >
                             Edit
                           </Button>

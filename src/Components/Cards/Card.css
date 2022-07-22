@@ -3,7 +3,7 @@
     display: grid;
     gap: 20px;
     grid-template-columns: auto auto auto auto;
-    margin-top: 20px;
+    margin-top: 14px;
     margin-left: 10px;
     cursor: pointer;
 }
@@ -73,6 +73,9 @@ border: 2px solid #2b78d4;
  } 
 
 
+ .textarea.ant-input {
+    max-width: 117% !important;
+ }
  .hover-content{
     display: none;
  }
