@@ -1,23 +1,20 @@
-import { Col, Row, Card, Button, Avatar, Image, Input, Modal, Form } from 'antd';
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
+import { Col, Row,  Button, Input, Modal, Form } from 'antd';
 import 'antd/dist/antd.css';
-import '../Cards/Card.css'
-import img from '../img/i1.png'
-import e from 'express';
+import '../Components/Dashboard.css'
 
 
 const { TextArea } = Input;
 type cardDetailstype = {
-  index:any
-  name: any
-  designation: any
-  Employee_details: any
-  // updateList:any
-  refresh:any
-  id:any
-  
-}
-  const Cards = (props: cardDetailstype) => {
+    name: any
+    designation: any
+    Employee_details: any
+    refresh:any
+    id:any
+    img:any
+    
+  }
+const ViewDetails = (props: cardDetailstype) => {
         
      
          const [modal2Visible, setModal2Visible] = useState(false);
@@ -42,7 +39,6 @@ type cardDetailstype = {
           }
 
           localStorage.setItem('employeeDetail', JSON.stringify(employeeDetail));
-          // props.updateList(employeeDetail);
           props.refresh()
       }
 
@@ -71,6 +67,7 @@ type cardDetailstype = {
       
       localStorage.setItem('employeeDetail', JSON.stringify(employeeDetail));
       props.refresh()
+      setModal2Visible(false);
     }
       
      
@@ -79,30 +76,7 @@ type cardDetailstype = {
       };
   return (
     <>
-     <Row>
-    
-        <Col xs={24} sm={24} md={24} lg={12} xl={8} >
-          <div className="site-card-border-less-wrapper " style={{ borderRadius: '10px' }}
-          key={props.index}
-          >
-            <Card style={{ width: 320 }} bodyStyle={{ borderRadius: '10px' }} className='card-widt'>
-              <div style={{ display: 'flex' }} className='card-one'>
-                
-                <div style={{ marginRight: '30px' }}>
-                  <img src={img} width={40} className='avatar'></img>
-                </div>
-                <div className='beforeHover'>
-                  <span className='title'>{props.name}</span><br></br>
-                  <span className='description'> {props.designation}</span><br></br>
-                  <br></br>
-                  <p className='content1' style={{marginRight: '20px', marginTop: '-9px', color: '#5C83B1' }}>{props.Employee_details}</p>
-                </div>
-
-              </div>
-              <div className='hover-content' >
-                <span className='hover-para'>This workflow is to enable an employee raise his leave request and to get it approved from his reporting manager</span><br></br>
-                
-                <Button type="primary" className='viewDetails' onClick={() => setModal2Visible(true)}>
+     <Button type="primary" className='viewDetails' onClick={() => setModal2Visible(true)}>
                   View Details
                 </Button>
                 <Button onClick={ handleDeletee}>Delete</Button>
@@ -115,7 +89,7 @@ type cardDetailstype = {
                 >
                   <div style={{ display: 'flex', paddingTop: '20px' }} className='card-one'>
                       <div style={{ marginRight: '30px' }}>
-                         <img src={img} width={40} className='avatar'></img>
+                         <img src={props.img} width={40} className='avatar'></img>
                       </div>
                       <div className='beforeHover'>
                          <span className='title'>{props.name}</span><br></br>
@@ -202,14 +176,9 @@ type cardDetailstype = {
                     </Col>
                   </Row>
                 </Modal>
-              </div>
-            </Card>
-          </div>
-        </Col>
-      </Row>
     </>
   );
 
 }
 
-export default Cards;
+export default ViewDetails;
